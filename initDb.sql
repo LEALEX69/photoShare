@@ -1,4 +1,5 @@
-drop database photoShare;
+drop database if exists photoShare;
+create database photoShare;
 -- drop table user;
 use photoShare;
 
@@ -11,10 +12,10 @@ use photoShare;
 ); */
 
 CREATE TABLE image (
-    idImage INT AUTO_INCREMENT PRIMARY KEY,
-    uploadDate DATE NOT NULL,
+    id_image INT AUTO_INCREMENT PRIMARY KEY,
+    upload_date DATE NOT NULL,
     description VARCHAR(255),
-    imagePath VARCHAR(255)
+    image_path VARCHAR(255)
     );
 
 -- INSERT INTO user VALUES (1, "ASSAHI", "ABD", "abd@gmail.com", '2003-10-31');
