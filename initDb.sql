@@ -11,7 +11,7 @@ use photoShare;
 ); */
 
 CREATE TABLE image {
-    idPhoto AUTO_INCREMENT PRIMARY KEY,
+    idImage AUTO_INCREMENT PRIMARY KEY,
     uploadDate DATE NOT NULL,
     description VARCHAR(255),
     imagePath VARCHAR(255)
