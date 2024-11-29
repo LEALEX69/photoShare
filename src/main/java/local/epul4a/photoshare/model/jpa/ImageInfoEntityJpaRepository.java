@@ -1,5 +1,6 @@
-package local.epul4a.photoshare.model;
+package local.epul4a.photoshare.model.jpa;
 
+import local.epul4a.photoshare.model.ImageInfoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,10 +13,11 @@ public interface ImageInfoEntityJpaRepository extends JpaRepository<ImageInfoEnt
     @Override
     @Query(
         value= """
-            select i.idImage as id,
-                   i.description as description,
-                   i.imagePath as imagePath,
-                   i.uploadDate as uploadDate
+            select i.id_image as id,
+                   i.upload_date as uploadDate,
+                   i.image_filename as imageFilename,
+                   i.image_path as imagePath,
+                   i.description as description
             from image i
        """,
         nativeQuery = true

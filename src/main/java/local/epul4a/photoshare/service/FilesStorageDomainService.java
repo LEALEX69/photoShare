@@ -3,7 +3,7 @@ package local.epul4a.photoshare.service;
 import local.epul4a.photoshare.dto.ImageInfoDTO;
 import local.epul4a.photoshare.mapper.ImageInfoMapper;
 import local.epul4a.photoshare.model.ImageInfoEntity;
-import local.epul4a.photoshare.model.ImageInfoEntityJpaRepository;
+import local.epul4a.photoshare.model.jpa.ImageInfoEntityJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
