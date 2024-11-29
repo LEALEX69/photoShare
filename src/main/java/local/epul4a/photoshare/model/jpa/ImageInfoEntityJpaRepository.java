@@ -18,7 +18,7 @@ public interface ImageInfoEntityJpaRepository extends JpaRepository<ImageInfoEnt
                    i.image_filename as imageFilename,
                    i.image_path as imagePath,
                    i.description as description
-            from image i
+            from imageFile i
        """,
         nativeQuery = true
     )
