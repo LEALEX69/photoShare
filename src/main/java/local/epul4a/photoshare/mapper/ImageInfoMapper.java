@@ -16,8 +16,9 @@ public class ImageInfoMapper {
         MultipartFile file = imageInfoDTO.getMultipartFile();
         String pathAsString = ROOT_PATH_STRING + "/" + file.getOriginalFilename();
         return new ImageInfoEntity()
-            .description(imageInfoDTO.getDescription())
+            .uploadDate(Instant.now())
+            .imageFilename(file.getOriginalFilename())
             .imagePath(pathAsString)
-            .uploadDate(Instant.now());
+            .description(imageInfoDTO.getDescription());
     }
 }

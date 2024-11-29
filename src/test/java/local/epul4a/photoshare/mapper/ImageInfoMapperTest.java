@@ -22,10 +22,11 @@ class ImageInfoMapperTest {
         // Then
         assertThat(result).isNotNull();
         assertThat(result.getId()).isNull();
-        assertThat(result.getDescription()).isEqualTo(ImageInfoDTOFixture.IMAGE_INFO_DTO_DESCRIPTION);
+        assertThat(result.getUploadDate().truncatedTo(ChronoUnit.DAYS)).isEqualTo(Instant.now().truncatedTo(ChronoUnit.DAYS));
+        assertThat(result.getImageFilename()).isEqualTo(ImageInfoDTOFixture.IMAGE_INFO_DTO_FILE.getOriginalFilename());
         assertThat(result.getImagePath()).isEqualTo(
             ImageInfoMapper.ROOT_PATH_STRING + "/" + ImageInfoDTOFixture.IMAGE_INFO_DTO_FILE.getOriginalFilename()
         );
-        assertThat(result.getUploadDate().truncatedTo(ChronoUnit.DAYS)).isEqualTo(Instant.now().truncatedTo(ChronoUnit.DAYS));
+        assertThat(result.getDescription()).isEqualTo(ImageInfoDTOFixture.IMAGE_INFO_DTO_DESCRIPTION);
     }
 }
