@@ -1,5 +1,7 @@
 package local.epul4a.photoshare.service;
 
+import local.epul4a.photoshare.mapper.ImageInfoMapper;
+import local.epul4a.photoshare.model.ImageInfoEntity;
 import local.epul4a.photoshare.model.ImageInfoEntityJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -38,7 +40,8 @@ public class FilesStorageDomainService implements FilesService {
     public void save(MultipartFile file) {
         try {
             Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-            Instant uploadDate = Instant.now();
+            ImageInfoEntity toSaveInDb = ImageInfoMapper.toEntityFromFile(file);
+            imageInfoEntityJpaRepository.save(toSaveInDb);
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
                 throw new RuntimeException("Un fichier de ce nom existe déjà.");

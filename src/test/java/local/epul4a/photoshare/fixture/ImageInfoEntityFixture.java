@@ -1,4 +1,4 @@
-package local.epul4a.photoshare.model.fixture;
+package local.epul4a.photoshare.fixture;
 
 import local.epul4a.photoshare.model.ImageInfo;
 import local.epul4a.photoshare.model.ImageInfoEntity;

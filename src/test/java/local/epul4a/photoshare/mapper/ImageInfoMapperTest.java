@@ -1,13 +1,31 @@
 package local.epul4a.photoshare.mapper;
 
+import local.epul4a.photoshare.model.ImageInfoEntity;
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ImageInfoMapperTest {
 
     @Test
-    void shouldToEntity() {
+    void shouldToEntityFromFile() {
+        // Given
+        MultipartFile file =
+            new MockMultipartFile("file", "test.txt", "text/plain", "Hello World".getBytes());
 
+        // When
+        ImageInfoEntity result = ImageInfoMapper.toEntityFromFile(file);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result.getId()).isNull();
+        assertThat(result.getDescription()).isEqualTo(file.getContentType());
+        assertThat(result.getImagePath()).isEqualTo(ImageInfoMapper.ROOT_PATH_STRING + file.getOriginalFilename());
+        assertThat(result.getUploadDate().truncatedTo(ChronoUnit.DAYS)).isEqualTo(Instant.now().truncatedTo(ChronoUnit.DAYS));
     }
 }

@@ -1,6 +1,6 @@
 package local.epul4a.photoshare.model;
 
-import local.epul4a.photoshare.model.fixture.ImageInfoEntityFixture;
+import local.epul4a.photoshare.fixture.ImageInfoEntityFixture;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

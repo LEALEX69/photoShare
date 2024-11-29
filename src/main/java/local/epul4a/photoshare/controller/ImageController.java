@@ -3,6 +3,7 @@ package local.epul4a.photoshare.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import local.epul4a.photoshare.service.FilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -26,6 +27,9 @@ public class ImageController {
   @Autowired
   FilesStorageService storageService;
 
+  @Autowired
+  FilesService filesService;
+
   @GetMapping("/")
   public String homepage() {
     return "redirect:/images";
@@ -41,8 +45,8 @@ public class ImageController {
     String message = "";
 
     try {
-      storageService.save(file);
-
+      // storageService.save(file);
+      filesService.save(file);
       message = "L'image a été téléchargée avec succès : " + file.getOriginalFilename();
       model.addAttribute("message", message);
     } catch (Exception e) {
