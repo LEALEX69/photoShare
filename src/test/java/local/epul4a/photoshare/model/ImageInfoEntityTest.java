@@ -17,9 +17,10 @@ class ImageInfoEntityTest {
 
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_ID);
-        assertThat(result.getDescription()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_DESCRIPTION);
-        assertThat(result.getImagePath()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_IMAGE_PATH);
         assertThat(result.getUploadDate().truncatedTo(ChronoUnit.DAYS))
             .isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_UPLOAD_DATE.truncatedTo(ChronoUnit.DAYS));
+        assertThat(result.getImageFilename()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_FILE_NAME);
+        assertThat(result.getImagePath()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_IMAGE_PATH);
+        assertThat(result.getDescription()).isEqualTo(ImageInfoEntityFixture.IMAGE_INFO_DESCRIPTION);
     }
 }

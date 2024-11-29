@@ -10,17 +10,20 @@ public class ImageInfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id_image", nullable = false)
     private Integer id;
+
+    @Column(name = "upload_date")
+    private Instant uploadDate;
+
+    @Column(name = "image_filename")
+    private String imageFilename;
+
+    @Column(name = "image_path")
+    private String imagePath;
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "imagePath")
-    private String imagePath;
-
-    @Column(name = "uploadDate")
-    private Instant uploadDate;
 
     public ImageInfoEntity() {}
 
@@ -38,12 +41,20 @@ public class ImageInfoEntity {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public Instant getUploadDate() {
+        return uploadDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUploadDate(Instant uploadDate) {
+        this.uploadDate = uploadDate;
+    }
+
+    public String getImageFilename() {
+        return imageFilename;
+    }
+
+    public void setImageFilename(String imageFilename) {
+        this.imageFilename = imageFilename;
     }
 
     public String getImagePath() {
@@ -54,12 +65,12 @@ public class ImageInfoEntity {
         this.imagePath = imagePath;
     }
 
-    public Instant getUploadDate() {
-        return uploadDate;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUploadDate(Instant uploadDate) {
-        this.uploadDate = uploadDate;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public ImageInfoEntity id(Integer id) {
@@ -67,8 +78,13 @@ public class ImageInfoEntity {
         return this;
     }
 
-    public ImageInfoEntity description(String description) {
-        setDescription(description);
+    public ImageInfoEntity uploadDate(Instant uploadDate) {
+        setUploadDate(uploadDate);
+        return this;
+    }
+
+    public ImageInfoEntity imageFilename(String imageFilename) {
+        setImageFilename(imageFilename);
         return this;
     }
 
@@ -77,8 +93,8 @@ public class ImageInfoEntity {
         return this;
     }
 
-    public ImageInfoEntity uploadDate(Instant uploadDate) {
-        setUploadDate(uploadDate);
+    public ImageInfoEntity description(String description) {
+        setDescription(description);
         return this;
     }
 }

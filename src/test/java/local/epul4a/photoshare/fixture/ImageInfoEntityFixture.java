@@ -9,6 +9,7 @@ public class ImageInfoEntityFixture {
 
     public static final Integer IMAGE_INFO_ID = 1;
     public static final String IMAGE_INFO_DESCRIPTION = "description";
+    public static final String IMAGE_INFO_FILE_NAME = "fileName";
     public static final String IMAGE_INFO_IMAGE_PATH = "imagePath";
     public static final Instant IMAGE_INFO_UPLOAD_DATE = Instant.now();
 
@@ -17,8 +18,9 @@ public class ImageInfoEntityFixture {
     public static ImageInfoEntity imageInfo() {
         return new ImageInfoEntity()
             .id(IMAGE_INFO_ID)
-            .description(IMAGE_INFO_DESCRIPTION)
+            .uploadDate(IMAGE_INFO_UPLOAD_DATE)
+            .imageFilename(IMAGE_INFO_FILE_NAME)
             .imagePath(IMAGE_INFO_IMAGE_PATH)
-            .uploadDate(IMAGE_INFO_UPLOAD_DATE);
+            .description(IMAGE_INFO_DESCRIPTION);
     }
 }

@@ -11,11 +11,12 @@ use photoShare;
                       birth_date DATE
 ); */
 
-CREATE TABLE image (
+CREATE TABLE imageFile (
     id_image INT AUTO_INCREMENT PRIMARY KEY,
     upload_date DATE NOT NULL,
-    description VARCHAR(255),
-    image_path VARCHAR(255)
+    image_filename VARCHAR(255),
+    image_path VARCHAR(255),
+    description VARCHAR(255)
     );
 
 -- INSERT INTO user VALUES (1, "ASSAHI", "ABD", "abd@gmail.com", '2003-10-31');
