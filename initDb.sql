@@ -11,7 +11,7 @@ use photoShare;
                       birth_date DATE
 ); */
 
-CREATE TABLE imageFile (
+CREATE TABLE image_file (
     id_image INT AUTO_INCREMENT PRIMARY KEY,
     upload_date DATETIME NOT NULL,
     image_filename VARCHAR(255),
