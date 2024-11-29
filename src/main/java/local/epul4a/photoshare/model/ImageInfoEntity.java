@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "image")
+@Table(name = "imageFile")
 public class ImageInfoEntity {
 
     @Id
