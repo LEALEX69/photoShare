@@ -3,6 +3,7 @@ package local.epul4a.photoshare.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import local.epul4a.photoshare.dto.ImageInfoDTO;
 import local.epul4a.photoshare.service.FilesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -10,10 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,20 +35,22 @@ public class ImageController {
 
   @GetMapping("/images/new")
   public String newImage(Model model) {
+    ImageInfoDTO imageInfoDTO = new ImageInfoDTO();
+    model.addAttribute("imageInfoDTO", imageInfoDTO);
     return "upload_form";
   }
 
   @PostMapping("/images/upload")
-  public String uploadImage(Model model, @RequestParam("file") MultipartFile file) {
+  public String uploadImage(Model model, @ModelAttribute("imageInfoDTO") ImageInfoDTO imageInfoDTO) {
     String message = "";
 
     try {
       // storageService.save(file);
-      filesService.save(file);
-      message = "L'image a été téléchargée avec succès : " + file.getOriginalFilename();
+      filesService.save(imageInfoDTO);
+      message = "L'image a été téléchargée avec succès : " + imageInfoDTO.getMultipartFile().getOriginalFilename();
       model.addAttribute("message", message);
     } catch (Exception e) {
-      message = "Impossible de télécharger l'image : " + file.getOriginalFilename() + ". Erreur : " + e.getMessage();
+      message = "Impossible de télécharger l'image : " + imageInfoDTO.getMultipartFile().getOriginalFilename() + ". Erreur : " + e.getMessage();
       model.addAttribute("message", message);
     }
 

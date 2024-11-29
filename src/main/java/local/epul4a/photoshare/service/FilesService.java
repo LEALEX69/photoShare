@@ -1,5 +1,6 @@
 package local.epul4a.photoshare.service;
 
+import local.epul4a.photoshare.dto.ImageInfoDTO;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -10,7 +11,7 @@ public interface FilesService {
 
     void init();
 
-    void save(MultipartFile file);
+    void save(ImageInfoDTO imageInfoDTO);
 
     Resource load(String filename);
 

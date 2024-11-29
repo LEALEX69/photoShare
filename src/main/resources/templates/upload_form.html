@@ -20,11 +20,23 @@
       id="uploadForm"
       method="post"
       th:action="@{/images/upload}"
+      th:object="${imageInfoDTO}"
       enctype="multipart/form-data">
-      <input id="input-file" type="file" name="file" accept="image/png, image/jpeg" />
+      <input id="input-file" type="file" name="file" accept="image/png, image/jpeg" th:field="*{multipartFile}"/>
       <button class="btn btn-sm btn-outline-success float-right" type="submit">
         Upload
       </button>
+
+      <br> <br>
+
+      <textarea
+        id="file-description"
+        name="file-description"
+        rows="5" cols="50"
+        placeholder="Entrez une description"
+        th:field="*{description}"
+      >
+      </textarea>
     </form>
 
     <div

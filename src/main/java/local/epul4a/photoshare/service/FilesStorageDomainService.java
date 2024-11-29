@@ -1,5 +1,6 @@
 package local.epul4a.photoshare.service;
 
+import local.epul4a.photoshare.dto.ImageInfoDTO;
 import local.epul4a.photoshare.mapper.ImageInfoMapper;
 import local.epul4a.photoshare.model.ImageInfoEntity;
 import local.epul4a.photoshare.model.ImageInfoEntityJpaRepository;
@@ -16,7 +17,6 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
 import java.util.stream.Stream;
 
 @Service
@@ -37,10 +37,11 @@ public class FilesStorageDomainService implements FilesService {
     }
 
     @Override
-    public void save(MultipartFile file) {
+    public void save(ImageInfoDTO imageInfoDTO) {
         try {
+            MultipartFile file = imageInfoDTO.getMultipartFile();
             Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-            ImageInfoEntity toSaveInDb = ImageInfoMapper.toEntityFromFile(file);
+            ImageInfoEntity toSaveInDb = ImageInfoMapper.toEntityFromDTO(imageInfoDTO);
             imageInfoEntityJpaRepository.save(toSaveInDb);
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
